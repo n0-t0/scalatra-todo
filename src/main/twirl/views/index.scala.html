@@ -1,0 +1,37 @@
+@(taskSeq: Seq[String])
+
+<html>
+    <head>
+        <title>Reminder</title>
+        <link rel="stylesheet" href="css/default.css">
+    </head>
+    <body>
+        <h1> re"mi"nder </h1>
+        <div class = form>
+            <form action="http://0.0.0.0:8080/">
+                <input type="text" name="task" />
+                <input type="submit" />
+            </form>
+        </div>
+        
+
+            <table id="task-list">
+                <thead>
+                  <tr>
+                    <th class="comment">task</th>
+                    <th class="button">status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    @for(task <- taskSeq) {
+                        <tr>
+                            <td>@task</td>
+                            <td><button>done</button></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        
+
+    </body>
+</html>
