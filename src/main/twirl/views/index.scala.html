@@ -1,4 +1,4 @@
-@(taskSeq: Seq[String])
+@(taskSeq: Seq[String], user_id: String)
 
 <html>
     <head>
@@ -8,13 +8,11 @@
     <body>
         <h1> re"mi"nder </h1>
         <div class = form>
-            <form action="http://0.0.0.0:8080/">
+            <form action="http://0.0.0.0:8080/?user_id=@user_id" method="post">
                 <input type="text" name="task" />
                 <input type="submit" />
             </form>
         </div>
-        
-
             <table id="task-list">
                 <thead>
                   <tr>

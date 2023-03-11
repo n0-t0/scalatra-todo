@@ -53,8 +53,6 @@ form {
     margin-right: auto;
     text-align: left;
 }
-
-
 table#task-list {
     table-layout: fixed;
     word-wrap: break-word;
