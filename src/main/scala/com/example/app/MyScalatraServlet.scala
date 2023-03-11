@@ -14,9 +14,11 @@ import scalikejdbc.config._
     // database connection
     // get user info
     // create user instance
+  
 class MyScalatraServlet extends ScalatraServlet {
 
   get("/") {
+
     val user_id = params("user_id")
     val dataList: List[Map[String, Any]] = DB readOnly { implicit session =>
       SQL("select * from tasks").map(rs => rs.toMap).list.apply()
@@ -31,28 +33,23 @@ class MyScalatraServlet extends ScalatraServlet {
       halt(400, "invalid task query parameter")
     }
     else {
-      DB localTx { implicit session =>
-        val user_id = params("user_id")
-        val task = params("task")
-        val now = java.time.LocalDateTime.now()
-
+      val user_id = params("user_id")
+      val task = params("task")
+      DB.localTx {  implicit session =>
         val insertSql = SQL("""
-          insert into tasks (user_id, task, discription, created_at)
+          insert into tasks (user_id, task, description, created_at)
           values (?, ?, ?, ?)
         """)
-        insertSql.bind(user_id, task, None, now).update.apply()
-
         println("new task "+ params("task") + " is added for " +params("user_id"))
-        redirect("/?user_id="+user_id)
+        insertSql.bind(user_id, task, "", java.time.LocalDateTime.now()).update.apply()
       }
+      redirect("/?user_id="+user_id)
     }
   }
 
 
-  
   get("/login") {
-    views.html.login()
-    Class.forName("org.h2.Driver")
+    Class.forName("com.mysql.jdbc.Driver")
     ConnectionPool.singleton("jdbc:mysql://localhost:3306/", "root", "my-secret-pw")
     implicit val session = AutoSession
 
@@ -70,19 +67,27 @@ class MyScalatraServlet extends ScalatraServlet {
           id bigint primary key auto_increment,
           user_id varchar(30) not null,
           task varchar(30) not null,
-          discription varchar(100),
+          description varchar(100),
           created_at timestamp not null
         )
       """).execute.apply()}
       println("create table tasks")
 
-      // DB.localTx {
-      //   val insertSql = SQL("""
-      //       insert into tasks (user_id, task, discription, created_at)
-      //       values (?, ?, ?, ?)
-      //     """)
-      //   insertSql.bind("tanaka", "task1", None, java.time.LocalDateTime.now()).update.apply()
-      // }
+      DB.localTx {  implicit session =>
+        val insertSql = SQL("""
+            insert into tasks (user_id, task, description, created_at)
+            values (?, ?, ?, ?)
+          """)
+        insertSql.bind("Jon", "task1", "aaa", java.time.LocalDateTime.now()).update.apply()
+      }
+      DB.localTx {  implicit session =>
+        val insertSql = SQL("""
+            insert into tasks (user_id, task, description, created_at)
+            values (?, ?, ?, ?)
+          """)
+        insertSql.bind("Jon", "task2", "aaa", java.time.LocalDateTime.now()).update.apply()
+      }
+      views.html.login()
 
   }
 }
