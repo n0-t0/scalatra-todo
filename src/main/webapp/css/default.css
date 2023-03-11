@@ -5,100 +5,53 @@ h1 {
     font-family: 'Itim', cursive;
 }
 
-input[type="submit"] {
-    display: inline-block;
+/* ---------- */
+div {
     width: 100%;
-    padding: 8px;
-    border: none;
-    border-radius: 4px;
-    background-color: #333;
-    color: #fff;
-    font-weight: bold;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    cursor: pointer;
-    border: 2px solid transparent;
-}
-
-/* form */
-input[type=text] {
-    margin-top: auto;
-    margin-bottom: auto;
-    height: 2.4em;
-    width: 100%;
-    padding: 0 16px;
-    border-radius: 4px;
-    border: none;
-    box-shadow: 0 0 0 1px #ccc inset;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-}
-
-.input[type=text]:focus {
-    outline: 0;
-    box-shadow: 0 0 0 2px rgb(33, 150, 243) inset;
-}
-
-
-div.form {
     display: block;
-    text-align: center;
-}
-
-form {
+    /* align-content: center; */
     display: inline-block;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: left;
 }
-table#task-list {
-    table-layout: fixed;
-    word-wrap: break-word;
-    display: inline-block;
-    width: 400px;
-    /* padding: 0.5em 1em;*/
-    margin: auto;
-    color: #5d627b;
-    background: white;
-    border-top: solid 5px #5d627b;
-    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.22);
+input[type=text] {
+    width: 60%;
+    height: 2.4em;
+    margin-left: 10%;
+    margin-right: 10%;
+    border-radius: 4px;
+    box-shadow: 0 0 0 1px #ccc inset;
 }
 
-table th {
-    color: #5d627b;
-    align: center;
-    text-align: center;
-}
-
-table th.comment {
-    width: 300px;
-    text-align: center;
-}
-
-table th.button {
-    width: 100px;
-    text-align: center;
-}
-
-table td.comment{
-    align: center;
-    text-align: center;
-}
-
-table td.button {
-    align : center;
-    width: 70%;
-    padding: 8px;
-    border: none;
+input[type="submit"] {
+    width: 15%;
+    margin-right: 5%;
+    height: 2.4em;
     border-radius: 4px;
     background-color: #333;
-    color: #fff;
+    color: white;
     font-weight: bold;
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    cursor: pointer;
-    border: 2px solid transparent;
+}
+/* ---------- */
+table {
+    margin-left: 20%;
+    width: 60%;
+    margin-right: 20%;
+    color: #333;
+    background: white;
+    border-top: solid 5px #333;
+    box-shadow: 0 3px 5px #333;
+}
+th, tr {
+    text-align: center;
+}
+.comment {
+    font-weight: bold;
+    font-size: 1em;
+    color: #333;
+}
+button {
+    border-radius: 4px;
+    background-color: #333;
+    color: white;
+    font-weight: bold;
+    width: 40%;
 }

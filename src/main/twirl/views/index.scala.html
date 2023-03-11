@@ -9,16 +9,16 @@
         <h1> re"mi"nder </h1>
         <div class = form>
             <form action="http://0.0.0.0:8080/?user_id=@user_id" method="post">
-                <input type="text" name="task" />
-                <input type="submit" />
+                <input type="text" name="task" /><input type="submit" />
             </form>
         </div>
+        <div>
             <table id="task-list">
                 <thead>
-                  <tr>
-                    <th class="comment">task</th>
-                    <th class="button">status</th>
-                  </tr>
+                    <tr>
+                        <th class="comment">task</th>
+                        <th class="button">status</th>
+                    </tr>
                 </thead>
                 <tbody>
                     @for(task <- taskSeq) {
@@ -29,7 +29,6 @@
                     }
                 </tbody>
             </table>
-        
-
+        </div>
     </body>
 </html>
